@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained model
-model = load_model('traticmodel.h5')
+model = load_model('traffic_model1.h5')
 
 # Define the labels
 labels = ['barricade', 'bicycle', 'caution_bicycle', 'caution_school_zone', 'diagonal_right_turn', 'entry_prohibited',
@@ -55,4 +55,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=7017,debug=True)
