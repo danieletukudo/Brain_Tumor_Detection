@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Sign Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(9000deg, #e94057, #8a2387); /* Gradient background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Ensure gradient background covers the entire viewport */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #fff; /* White color for heading text */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #prediction {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff; /* White color for prediction text */
+        }
+
+        #image-container {
+            display: none; /* Initially hide the image container */
+            margin-top: 20px;
+        }
+
+        #uploaded-image {
+            width: 80%; /* Set the width to 80% of the viewport */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 800px; /* Set maximum width to 800px */
+            border: 2px solid #fff; /* White border around the image */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #no-image-message {
+            display: none; /* Initially hide the message */
+            color: #f00; /* Red color for error message */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Traffic Sign Recognition</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file-input" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="no-image-message">Please upload an image.</div> <!-- Error message -->
+    <div id="image-container">
+        <img id="uploaded-image" src="#" alt="Uploaded Image">
+    </div>
+    <div id="prediction"></div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('file-input');
+            if (fileInput.files.length === 0) {
+                document.getElementById('no-image-message').style.display = 'block';
+                return; // Do not proceed if no file is selected
+            }
+            document.getElementById('no-image-message').style.display = 'none'; // Hide error message if file is selected
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            const image = document.getElementById('uploaded-image');
+            image.src = URL.createObjectURL(fileInput.files[0]);
+
+            document.getElementById('image-container').style.display = 'block'; // Show the image container
+            document.getElementById('prediction').textContent = `Prediction: ${data.prediction}`;
+        });
+    </script>
+</body>
+</html>
