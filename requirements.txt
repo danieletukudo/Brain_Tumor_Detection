@@ -3,3 +3,6 @@ tensorflow
 opencv-python
 numpy
 pillow
+shutil
+imutils
+matplotlib
