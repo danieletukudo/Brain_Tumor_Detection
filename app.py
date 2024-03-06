@@ -65,6 +65,11 @@ def predict():
                 predicted_label = labels[np.argmax(output_data)]
                 return jsonify({'prediction': predicted_label})
 
+            else:
+                return jsonify(
+                    {'prediction': 'Please upload the right picture file with an extension of png, jpg or jpeg'})
+
+
     except:
 
         return jsonify({'prediction': "Invalid Input"})
