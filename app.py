@@ -20,9 +20,10 @@ labels = ["No Brain tumor Detected", "Brain Tumor Detected"]
 
 # Function to preprocess the image
 def preprocess_image(image_path):
-    img = image.load_img(image_path, target_size=(100, 100))
+    img = image.load_img(image_path, target_size=(100, 100))  # Adjust target size if needed
     img_array = image.img_to_array(img)
-    img_array /= 255.0  # Normalize the image
+    img_array = cv2.resize(img_array, (100, 100))  # Resize if needed
+    img_array = img_array / 255.0  # Normalize the image
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
 
