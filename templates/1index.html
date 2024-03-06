@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Tumor Detection</title>
+    <title>Traffic Sign Recognition</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,13 +21,6 @@
         h1 {
             margin-bottom: 20px;
             color: #fff; /* White color for heading text */
-        }
-
-        h3 {
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
         }
 
         form {
@@ -57,18 +50,9 @@
             color: #fff; /* White color for prediction text */
         }
 
-        #loading-message {
-            display: none; /* Initially hide the loading message */
-            font-size: 18px;
-            color: #fff; /* White color for loading text */
-            margin-top: 20px;
-        }
-
         #image-container {
             display: none; /* Initially hide the image container */
             margin-top: 20px;
-            max-height: 60vh; /* Set maximum height for image container */
-            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         #uploaded-image {
@@ -88,20 +72,15 @@
     </style>
 </head>
 <body>
-    <h1>Brain Tumor Detection</h1>
-    <h3>Press the Choose file button to upload an MRI
-        scan of your brain and then press the upload
-        button to make your detection</h3>
-
+    <h1>Traffic Sign Recognition</h1>
     <form action="/predict" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="file-input" accept="image/*" required>
-        <button type="submit">Detect</button>
+        <button type="submit">Upload</button>
     </form>
     <div id="no-image-message">Please upload an image.</div> <!-- Error message -->
     <div id="image-container">
         <img id="uploaded-image" src="#" alt="Uploaded Image">
     </div>
-    <div id="loading-message">Loading Result...</div> <!-- Loading message -->
     <div id="prediction"></div>
 
     <script>
@@ -117,10 +96,6 @@
             const formData = new FormData();
             formData.append('file', fileInput.files[0]);
 
-            // Show loading message while waiting for response
-            document.getElementById('loading-message').style.display = 'block';
-            document.getElementById('prediction').textContent = ''; // Clear previous prediction
-
             const response = await fetch('/predict', {
                 method: 'POST',
                 body: formData
@@ -131,7 +106,6 @@
             image.src = URL.createObjectURL(fileInput.files[0]);
 
             document.getElementById('image-container').style.display = 'block'; // Show the image container
-            document.getElementById('loading-message').style.display = 'none'; // Hide loading message
             document.getElementById('prediction').textContent = `Prediction: ${data.prediction}`;
         });
     </script>
