@@ -1,4 +1,3 @@
-
 import os
 import uuid
 from flask import Flask, render_template, request, jsonify
@@ -43,15 +42,14 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-
-    if request.method == 'POST':
+    try:
+        if request.method == 'POST':
             input_image = request.files['file']
 
             if input_image.filename == '':
                 return jsonify({'response': 'No files inserted yet'})
 
             if input_image and allowed_file(input_image.filename):
-
                 img_path = f'images/uploaded_image{uuid.uuid4()}.jpg'
 
                 input_image.save(img_path)
@@ -67,9 +65,9 @@ def predict():
                 predicted_label = labels[np.argmax(output_data)]
                 return jsonify({'prediction': predicted_label})
 
+    except:
 
-
-
+        return jsonify({'prediction': "Invalid Input"})
 
 
 if __name__ == '__main__':
