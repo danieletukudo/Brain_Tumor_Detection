@@ -117,7 +117,7 @@ class training:
         converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir)
         converter.optimizations = [tf.lite.Optimize.DEFAULT]
         tflite_quant_model = converter.convert()
-        with open('quantized_model.tflite', 'wb') as f:
+        with open('100quantized_model.tflite', 'wb') as f:
             f.write(tflite_quant_model)
 
         print("Model Quantization Done ")

@@ -21,9 +21,9 @@ class BrainTumorDetector:
 
     # Function to preprocess the image
     def preprocess_image(self, image_path: os.path) -> np.ndarray:
-        img = image.load_img(image_path, target_size=(100, 100))  # Adjust target size if needed
+        img = image.load_img(image_path, target_size=(150, 150))  # Adjust target size if needed
         img_array = image.img_to_array(img)
-        img_array = cv2.resize(img_array, (100, 100))  # Resize if needed
+        img_array = cv2.resize(img_array, (150, 150))  # Resize if needed
         img_array = img_array / 255.0  # Normalize the image
         img_array = np.expand_dims(img_array, axis=0)
         return img_array
@@ -46,7 +46,10 @@ class BrainTumorDetector:
             self.interpreter.invoke()
 
             output_data = self.interpreter.get_tensor(output_details[0]['index'])
+
             predicted_label = self.labels[np.argmax(output_data)]
+
+            os.remove(img_path)
             return jsonify({'prediction': predicted_label})
 
         else:
