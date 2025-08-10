@@ -9,6 +9,9 @@ import tensorflow as tf
 app = Flask(__name__)
 
 
+
+
+
 class BrainTumorDetector:
     def __init__(self) -> None:
         # Load the quantized TensorFlow Lite model

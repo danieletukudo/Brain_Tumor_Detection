@@ -4,6 +4,8 @@ FROM python:3.9.11
 # Set the working directory to /app
 WORKDIR /app
 
+
+
 # Copy the requirements file into the container and install the dependencies
 
 COPY requirements.txt /app

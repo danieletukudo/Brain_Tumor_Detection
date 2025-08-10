@@ -9,6 +9,8 @@ from tensorflow.keras import Model
 import matplotlib.pyplot as plt
 
 
+
+
 class myModel:
 
     def __init__(self) -> None:
