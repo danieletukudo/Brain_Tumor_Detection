@@ -15,7 +15,7 @@ app = Flask(__name__)
 class BrainTumorDetector:
     def __init__(self) -> None:
         # Load the quantized TensorFlow Lite model
-        self.tflite_quant_model = "quantized_model.tflite"
+        self.tflite_quant_model = "model/quantized_model.tflite"
         self.interpreter = tf.lite.Interpreter(model_path=self.tflite_quant_model)
         self.interpreter.allocate_tensors()
 
