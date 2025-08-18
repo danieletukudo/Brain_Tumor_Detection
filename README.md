@@ -4,7 +4,7 @@ This project includes a Flask-based web application for detecting brain tumors u
 
 video demo link: https://youtu.be/MVM3kSwilmo 
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/<https://youtu.be/MVM3kSwilmo>/0.jpg)](https://www.youtube.com/watch?v=<https://youtu.be/MVM3kSwilmo>)
+[![Demo Video](https://img.youtube.com/vi/https://youtu.be/MVM3kSwilmo/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/MVM3kSwilmo)
 
 ## Web Application
 
