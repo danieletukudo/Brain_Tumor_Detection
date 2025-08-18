@@ -2,7 +2,9 @@
 
 This project includes a Flask-based web application for detecting brain tumors using a pre-trained TensorFlow Lite model and a training pipeline for training the model using MRI scan images.
 
+video demo link: https://youtu.be/MVM3kSwilmo 
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/<https://youtu.be/MVM3kSwilmo>/0.jpg)](https://www.youtube.com/watch?v=<https://youtu.be/MVM3kSwilmo>)
 
 ## Web Application
 
