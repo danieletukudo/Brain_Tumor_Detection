@@ -2,6 +2,12 @@
 
 This project includes a Flask-based web application for detecting brain tumors using a pre-trained TensorFlow Lite model and a training pipeline for training the model using MRI scan images.
 
+# Problem Statement
+
+Brain tumors are among the most life-threatening neurological disorders, accounting for high morbidity and mortality rates worldwide. Early and accurate detection is critical for improving patient survival rates, yet current diagnostic methods heavily rely on manual interpretation of MRI scans by radiologists. This process is time-consuming, prone to human error, and often limited by the availability of medical experts, especially in under-resourced regions.
+
+There is a pressing need for an intelligent, automated system that can assist healthcare professionals by analyzing brain MRI scans quickly and accurately, thereby reducing diagnostic delays, improving precision, and enabling timely treatment. Our proposed Brain Tumor Detector leverages machine learning and image processing to classify and detect brain tumors efficiently, providing a reliable decision-support tool for clinicians and enhancing accessibility to quality healthcare.
+
 video demo link: https://youtu.be/MVM3kSwilmo 
 
 [![Demo Video](https://img.youtube.com/vi/MVM3kSwilmo/0.jpg)](https://www.youtube.com/watch?v=MVM3kSwilmo)
